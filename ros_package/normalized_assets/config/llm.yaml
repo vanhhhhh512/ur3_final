@@ -1,8 +1,0 @@
-# M10 OpenAI-compatible 9Router planner configuration. Secrets stay in env.
-base_url_env: NINEROUTER_BASE_URL
-api_key_env: NINEROUTER_API_KEY
-model_env: NINEROUTER_MODEL
-
-default_base_url: http://127.0.0.1:20128/v1
-timeout_sec: 60
-temperature: 0.0

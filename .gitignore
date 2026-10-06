@@ -21,3 +21,7 @@ env/
 venv/
 .vscode/
 .idea/
+
+# Generated build-time asset layout
+**/build/
+**/normalized_assets/
