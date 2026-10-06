@@ -1,10 +1,10 @@
 # UR3 Final
 
-ROS 2 Humble package for the UR3e Gazebo workcell, camera-based cube sorting, RViz/MoveIt scene, and student-ID assignment task. The ROS package name is `ur3_perception_llm_control`.
+Gói ROS 2 Humble mô phỏng UR3e trên Gazebo, nhận diện và sắp xếp khối theo camera, hiển thị cảnh bằng RViz/MoveIt và hỗ trợ nhiệm vụ theo mã số sinh viên. Tên package ROS là `ur3_perception_llm_control`.
 
-## Requirements
+## Yêu cầu
 
-Install ROS 2 Humble with the UR simulation, MoveIt, Gazebo, and `ros_gz` packages. From the ROS workspace root, install package dependencies and build:
+Cài ROS 2 Humble cùng các package mô phỏng UR, MoveIt, Gazebo và `ros_gz`. Đặt repo này tại `src/ur3_final` trong workspace ROS, sau đó chạy từ thư mục gốc workspace:
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -13,11 +13,11 @@ colcon build --symlink-install --packages-select ur3_perception_llm_control
 source install/setup.bash
 ```
 
-Place this repository at `src/ur3_final` in the ROS workspace before building. If the workspace also contains another checkout of `ur3_perception_llm_control`, remove that duplicate from the build source path.
+Nếu workspace có một bản khác của `ur3_perception_llm_control`, hãy bỏ bản trùng khỏi đường dẫn build.
 
-## Run
+## Chạy mô phỏng và nhập nhiệm vụ
 
-Use two terminals. Source ROS and the workspace overlay in each terminal and set the same environment:
+Mở hai terminal. Trong **cả hai terminal**, vào workspace, source ROS và workspace overlay, rồi đặt cùng biến môi trường:
 
 ```bash
 cd ~/ur3_ws
@@ -26,14 +26,14 @@ source install/setup.bash
 export ROS_DOMAIN_ID=70 ROS_LOCALHOST_ONLY=1 IGN_PARTITION=ur3_bai03_five_blocks
 ```
 
-Terminal 1, start Gazebo, controllers, MoveIt, and RViz without starting an automatic task:
+**Terminal 1:** khởi chạy Gazebo, controller, MoveIt và RViz; chưa tự chạy nhiệm vụ:
 
 ```bash
-ros2 launch ur3_perception_llm_control robot_sorting_demo.launch.py \
+ros2 launch ur3_perception_llm_control sorting_demo.launch.py \
   execute_demo:=false launch_rviz:=true
 ```
 
-Terminal 2, start the interactive task prompt:
+**Terminal 2:** khởi chạy giao diện nhập nhiệm vụ. Cần chạy Ollama với endpoint tương thích OpenAI tại địa chỉ bên dưới:
 
 ```bash
 export NINEROUTER_BASE_URL=http://127.0.0.1:11434/v1
@@ -42,10 +42,10 @@ export NINEROUTER_MODEL=qwen2.5:3b
 ros2 run ur3_perception_llm_control assignment3_runtime --execute
 ```
 
-At `Task (quit to stop):`, enter a supported task, for example:
+Tại lời nhắc `Task (quit to stop):`, nhập nhiệm vụ cần chạy, ví dụ:
 
 ```text
 Arrange all objects according to my student ID.
 ```
 
-The configured student ID is `23020719`. To use the LLM task planner, start a local OpenAI-compatible Ollama endpoint at the configured URL before running Terminal 2. Start only one workcell launch per `IGN_PARTITION`.
+Mã số sinh viên cấu hình sẵn là `23020719`. Chỉ chạy một workcell trên mỗi `IGN_PARTITION`.
