@@ -3,11 +3,12 @@ from pathlib import Path
 import setuptools
 
 identity = 'ur3_perception_llm_control'
-resources = [('share/ament_index/resource_index/packages', ['resource/' + identity]),
+resources = [('share/ament_index/resource_index/packages', ['assets/resource/' + identity]),
              ('share/' + identity, ['package.xml', 'LICENSE', 'NOTICE'])]
 for folder in ('config', 'launch', 'prompts', 'srdf', 'urdf', 'rviz', 'worlds'):
+    source = Path('assets') / folder
     resources.append(('share/' + identity + '/' + folder,
-                      [str(path) for path in sorted(Path(folder).glob('*')) if path.is_file()]))
+                      [str(path) for path in sorted(source.glob('*')) if path.is_file()]))
 commands = {
     'assignment3_runtime': 'console:main',
     'workcell_inspect': 'console:main',
