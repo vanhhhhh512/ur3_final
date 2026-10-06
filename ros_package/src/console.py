@@ -16,7 +16,7 @@ from .transaction import WorkcellSession
 from .student_task import is_student_arrangement, load_assignment, perform_student_arrangement
 
 
-PACKAGE_ID = 'ur3_perception_llm_control'
+PACKAGE_ID = 'llm_va'
 
 
 def arguments(argv):

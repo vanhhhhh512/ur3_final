@@ -3,7 +3,7 @@ from pathlib import Path
 from shutil import copyfile
 import setuptools
 
-identity = 'ur3_perception_llm_control'
+identity = 'llm_va'
 package_root = Path(__file__).resolve().parent
 assets = package_root / 'assets'
 normalized = package_root / 'build' / 'normalized_assets'

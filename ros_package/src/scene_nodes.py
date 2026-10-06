@@ -15,7 +15,7 @@ from .contracts import Layout
 from .ros_port import gazebo_samples, latched_policy, pose_at
 
 
-PACKAGE = 'ur3_perception_llm_control'
+PACKAGE = 'llm_va'
 
 
 def scene_path(node):

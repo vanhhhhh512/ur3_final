@@ -82,7 +82,7 @@ def record_camera(output, duration):
     from ament_index_python.packages import get_package_share_directory
     from .contracts import Layout
     from .ros_port import EventHub
-    folder = Path(get_package_share_directory('ur3_perception_llm_control')) / 'config'
+    folder = Path(get_package_share_directory('llm_va')) / 'config'
     layout = Layout.read(folder / 'scene_m12_blocker.yaml')
     ros.init(args=[])
     hub = EventHub(layout, folder, name='bai03_camera_recorder')
