@@ -15,7 +15,7 @@ from .contracts import Layout, configuration
 from .sdf_factory import spawn_specs
 
 
-PKG = 'llm_va'
+PKG = 'llm'
 
 
 def package_file(package, *parts):
@@ -134,12 +134,12 @@ def assemble_launch(mode):
     if mode == 'workcell':
         options.update(gazebo_gui='true', launch_moveit='true', start_local_llm='true', execute_demo='true',
                        demo_command='Put the red cube in Zone B and return home.',
-                       task_output='/tmp/llm_va_last_task.json')
+                       task_output='/tmp/llm_last_task.json')
     declared = [Argument(key, default_value=value) for key, value in options.items()]
     if mode == 'workcell':
         declared.extend([Argument('start_local_llm', default_value='true'), Argument('execute_demo', default_value='true'),
                          Argument('demo_command', default_value='Put the red cube in Zone B and return home.'),
-                         Argument('task_output', default_value='/tmp/llm_va_last_task.json')])
+                         Argument('task_output', default_value='/tmp/llm_last_task.json')])
     declared.append(SetEnvironmentVariable('UR3_LLM_SCENE_CONFIG', Option('scene_config')))
     declared.append(OpaqueFunction(function=workcell_processes if mode == 'workcell' else moveit_processes))
     return Description(declared)

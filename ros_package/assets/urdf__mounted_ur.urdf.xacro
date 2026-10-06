@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
   <!-- Assignment wrapper around the vendor UR macro. Geometry remains vendor-owned. -->
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
-  <xacro:include filename="$(find llm_va)/urdf/gripper.xacro"/>
+  <xacro:include filename="$(find llm)/urdf/gripper.xacro"/>
 
   <xacro:arg name="name" default="ur"/>
   <xacro:arg name="ur_type" default="ur3e"/>
