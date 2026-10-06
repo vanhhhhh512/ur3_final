@@ -1,0 +1,3 @@
+# Install only inside the ROS 2 Humble development container.
+# 9Router exposes the OpenAI Chat Completions-compatible API used by M10.
+openai>=1.0,<2.0

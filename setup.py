@@ -1,0 +1,23 @@
+"""Install the independent Python runtime alongside attributed physical assets."""
+from pathlib import Path
+import setuptools
+
+identity = 'ur3_perception_llm_control'
+resources = [('share/ament_index/resource_index/packages', ['resource/' + identity]),
+             ('share/' + identity, ['package.xml', 'LICENSE', 'NOTICE'])]
+for folder in ('config', 'launch', 'prompt', 'srdf', 'urdf', 'rviz', 'worlds'):
+    resources.append(('share/' + identity + '/' + folder,
+                      [str(path) for path in sorted(Path(folder).glob('*')) if path.is_file()]))
+commands = {
+    'assignment3_runtime': 'console:main',
+    'workcell_inspect': 'console:main',
+    'grasp_state_cache': 'background:relay_main',
+    'planning_scene': 'background:fixtures_main',
+    'zone_markers': 'background:fixtures_main',
+    'workcell_evidence': 'evidence:main',
+}
+setuptools.setup(name=identity, version='0.2.0', packages=[identity], data_files=resources,
+    install_requires=['setuptools'], license='Apache-2.0', zip_safe=False,
+    maintainer='Do Viet Anh', maintainer_email='maintainer@example.com',
+    description='Immutable camera state and feedback-verified UR3 skill transactions',
+    entry_points={'console_scripts': [f'{command} = {identity}.{function}' for command, function in commands.items()]})

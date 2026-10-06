@@ -1,0 +1,26 @@
+# HSV ranges measured from the M2 Gazebo RGB frame (OpenCV H: 0..179).
+# Tight saturation bounds distinguish green/purple cube tops from zone_c/b.
+schema_version: 1
+camera_center_world_xyz_m: [0.0, 0.38, 1.25]
+cube_top_z_m: 0.345
+stability:
+  frames: 8
+  max_xy_spread_m: 0.005
+colors:
+  red_cube:
+    hsv_ranges: [[0, 6, 175, 220, 175, 245], [175, 179, 175, 220, 175, 245]]
+  yellow_cube:
+    hsv_ranges: [[22, 32, 175, 220, 175, 245]]
+  blue_cube:
+    hsv_ranges: [[107, 120, 175, 220, 175, 245]]
+  green_cube:
+    hsv_ranges: [[64, 72, 160, 220, 165, 240]]
+  purple_cube:
+    hsv_ranges: [[138, 151, 150, 190, 165, 235]]
+blob:
+  min_area_px: 1200
+  max_area_px: 3200
+  min_fill_ratio: 0.85
+  min_aspect_ratio: 0.85
+  max_aspect_ratio: 1.15
+  morphology_kernel_px: 5
