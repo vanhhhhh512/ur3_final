@@ -1,6 +1,6 @@
 # UR3 Final
 
-Gói ROS 2 Humble mô phỏng UR3e trên Gazebo, nhận diện và sắp xếp khối theo camera, hiển thị cảnh bằng RViz/MoveIt và hỗ trợ nhiệm vụ theo mã số sinh viên. Tên package ROS là `ur3_perception_llm_control`.
+Gói ROS 2 Humble mô phỏng UR3e trên Gazebo, nhận diện và sắp xếp khối theo camera, hiển thị cảnh bằng RViz/MoveIt và hỗ trợ nhiệm vụ theo MSSV.
 
 ## Yêu cầu
 
@@ -47,5 +47,3 @@ Tại lời nhắc `Task (quit to stop):`, nhập nhiệm vụ cần chạy, ví
 ```text
 Arrange all objects according to my student ID.
 ```
-
-Mã số sinh viên cấu hình sẵn là `23020719`. Chỉ chạy một workcell trên mỗi `IGN_PARTITION`.
