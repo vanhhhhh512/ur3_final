@@ -1,0 +1,43 @@
+# M4 arm-motion settings. Poses are expressed in base_link using SI units.
+planning_group: ur_manipulator
+planning_frame: base_link
+planning_tip: tool0
+application_tip: gripper_tcp
+tool0_to_tcp_z: 0.060
+velocity_scaling: 0.05
+acceleration_scaling: 0.05
+planning_time: 5.0
+planning_attempts: 5
+
+# Gripper TCP offsets. Physical picks use camera XY and tabletop/cube Z;
+# fixed zone placement XY and physical dimensions come from scene.yaml.
+manipulation:
+  orientation_xyzw: [-0.70710678, 0.70710678, 0.0, 0.0]
+  approach_clearance: 0.100
+  grasp_z_offset: 0.000
+  retreat_clearance: 0.120
+  attachment_link: gripper_tcp
+  touch_links: [gripper_base, left_finger_link, right_finger_link]
+
+# A collision-checked, bent-elbow, top-down posture. Keeping the elbow away
+# from zero avoids the singular straight-arm branch used by the stock "up"
+# posture. The gripper TCP is approximately (0.299, 0.131, 0.223) in base_link.
+home:
+  shoulder_pan_joint: 0.0
+  shoulder_lift_joint: -1.5708
+  elbow_joint: 1.5708
+  wrist_1_joint: -1.5708
+  wrist_2_joint: -1.5708
+  wrist_3_joint: 0.0
+
+# A small, collision-checked displacement from HOME. It exercises a Cartesian
+# TCP target without approaching a cube or entering the later pick/place flow.
+test_gripper_tcp_pose:
+  frame_id: base_link
+  position: [0.250, 0.180, 0.250]
+  orientation_xyzw: [-0.70710678, 0.70710678, 0.0, 0.0]
+
+invalid_gripper_tcp_pose:
+  frame_id: base_link
+  position: [2.0, 0.0, 2.0]
+  orientation_xyzw: [0.0, 0.0, 0.0, 1.0]

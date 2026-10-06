@@ -4,7 +4,7 @@ Gói ROS 2 Humble mô phỏng UR3e trên Gazebo, nhận diện và sắp xếp k
 
 ## Yêu cầu
 
-Cài ROS 2 Humble cùng các package mô phỏng UR, MoveIt, Gazebo và `ros_gz`. Đặt repo này tại `src/ur3_final` trong workspace ROS, sau đó chạy từ thư mục gốc workspace:
+Cài ROS 2 Humble cùng các package mô phỏng UR, MoveIt, Gazebo và `ros_gz`. Đặt repo này tại `src/ur3_final` trong workspace ROS. Package ROS nằm trong `ros_package/`; Colcon sẽ tự tìm package con. Chạy các lệnh sau từ thư mục gốc workspace:
 
 ```bash
 source /opt/ros/humble/setup.bash

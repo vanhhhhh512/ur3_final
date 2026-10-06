@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
+  <xacro:arg name="name" default="ur"/>
+  <xacro:arg name="prefix" default=""/>
+
+  <!-- Reuse the vendor planning group and its established collision matrix. -->
+  <xacro:include filename="$(find ur_moveit_config)/srdf/ur_macro.srdf.xacro"/>
+  <xacro:ur_srdf name="$(arg name)" prefix="$(arg prefix)"/>
+
+  <!-- The palm begins at the tool mounting plane and is adjacent to wrist 3. -->
+  <disable_collisions
+    link1="$(arg prefix)wrist_3_link"
+    link2="gripper_base"
+    reason="Adjacent"/>
+</robot>

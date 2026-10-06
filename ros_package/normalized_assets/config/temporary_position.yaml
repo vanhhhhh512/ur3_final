@@ -1,0 +1,7 @@
+# M9 geometry margins in meters. A 60 mm grid leaves a 15 mm nominal gap
+# between 45 mm cubes while keeping the live feasibility search small.
+grid_spacing: 0.060
+table_edge_clearance: 0.010
+zone_clearance: 0.012
+cube_clearance: 0.015
+fixed_obstacle_clearance: 0.020
